@@ -1,8 +1,271 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-trabajando
-</body>
+    <head>        
+        <meta charset="utf-8">
+        <meta NAME="Description" CONTENT="Simple Jquery plugin html select">
+        <meta name="google-site-verification" content="2adlTrW0ReL_1L2a0hLmtdCQJMQWGQj2jPAVTEedwfU" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Z_choos: jQuery plugin</title>
+        <script src="http://code.jquery.com/jquery-1.11.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!--link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"-->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <!--script src="./bootstrap/js/bootstrap.js" type="text/javascript"></script-->
+        <script src="./jquery.z_choos.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="./z_choos.css">
+        <style>
+            .sin_pad{
+                padding-left: 0px!important;
+                padding-right: 0px!important;
+                padding-top: 8px;
+            }
+            .w50px{
+                width: 70px!important;
+                padding: 3px!important;
+            }
+            .form-group{
+                margin-bottom: 3px!important;
+                /*border: solid 1px black;*/
+            }
+            .form-group>input[type="checkbox"]{
+                margin-top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="col-sm-12">
+            <h3>Z_choos</h3>
+            <h4>Un simple plugin jquery para que puedas potenciar tu desarrollo</h4>
+            <span>Para que puedas probarlo al maximo te brindamos esta herramienta de testeo</span>
+            <form class="form-inline" role="form">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="wid">Ancho</label>
+                    <input type="number" class="form-control w50px col-sm-2" id="wid" onchange="armar()"/>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="hei">Alto</label>
+                    <input type="number" class="form-control w50px" id="hei" onchange="armar()" />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="df">Mostrar en linea (inline)</label>
+                    <input type="checkbox" class="form-control" id="df" onchange="armar()" />
+                    <span>default: flotante (float)</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="mx">Resultados Maximos</label>
+                    <input type="number" class="form-control w50px" id="mx" onchange="armar()" />
+                    <span>default: todos</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="ph">PlaceHolder</label>
+                    <input type="text" class="form-control  col-sm-2" id="ph" onchange="armar()" />
+                    <span>default: "" (vacio)</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="ss">Mostrar Seleccionados</label>
+                    <input type="checkbox" class="form-control" id="ss" onchange="armar()" />
+                    <span>default: false</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="wc">Con checkbox</label>
+                    <input type="checkbox" class="form-control" id="wc" onchange="armar()" />
+                    <span>default: false</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="nr">Mensaje sin resultados</label>
+                    <input type="text" class="form-control" id="nr" onchange="armar()" />
+                    <span>default: "no result"</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="st">Rayado (cebra)</label>
+                    <input type="checkbox" class="form-control" id="st" onchange="armar()" />
+                    <span>default: false</span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 sin_pad" for="ct">Contenedor</label>
+                    <input type="checkbox" class="form-control" id="ct" onchange="armar()" />
+                    <span>default: false</span>
+                </div>
+                <div id="contenido" class="high col-sm-12 "></div>
+                <div class="col-sm-12 text-center">
+                <button type="button" class="btn btn-default" onclick="construir()">Probar</button>
+                </div>
+            </form>                                   
+            <div class="col-sm-6">
+                <h3>Convierte esto</h3>
+                <select multiple>
+                    <option value="427">Acura</option>
+                    <option value="359">Alfa Romeo</option>
+                    <option value="412">Aro</option>
+                    <option value="360">Asia</option>
+                    <option value="361">Audi</option>
+                    <option value="457">Autounion</option>
+                    <option value="362">BMW</option>
+                    <option value="464">Borgward</option>
+                    <option value="421">Cadillac</option>
+                    <option value="495">Chery</option>
+                    <option value="363">Chevrolet</option>
+                    <option value="364">Chrysler</option>
+                    <option value="365">Citroën</option>
+                    <option value="414">Dacia</option>
+                    <option value="366">Daewoo</option>
+                    <option value="367">Daihatsu</option>
+                    <option value="463">De Tomaso</option>
+                    <option value="480">Deutz</option>
+                    <option value="368">Dodge</option>
+                    <option value="369">Ferrari</option>
+                    <option value="370">Fiat</option>
+                    <option value="371">Ford</option>
+                    <option value="420">FSO</option>
+                    <option value="373">Honda</option>
+                    <option value="474">Hummer</option>
+                    <option value="372">Hyundai</option>
+                    <option value="467">IKA</option>
+                    <option value="374">Isuzu</option>
+                    <option value="375">Iveco</option>
+                    <option value="376">Jaguar</option>
+                    <option value="377">Jeep</option>
+                    <option value="378">Kia</option>
+                    <option value="407">Lada</option>
+                    <option value="466">Lamborghini</option>
+                    <option value="423">Lancia</option>
+                    <option value="379">Land Rover</option>
+                    <option value="487">Lexus</option>
+                    <option value="381">Mazda</option>
+                    <option value="382">Mercedes-Benz</option>
+                    <option value="482">MG</option>
+                    <option value="465">Mini</option>
+                    <option value="383">Mitsubishi</option>
+                    <option value="424">Morris</option>
+                    <option value="461">Motorhome</option>
+                    <option value="384">Nissan</option>
+                    <option value="415">Opel</option>
+                    <option value="485">Overlan</option>
+                    <option value="385">Peugeot</option>
+                    <option value="444">Piaggio</option>
+                    <option value="452">Pontiac</option>
+                    <option value="386">Porsche</option>
+                    <option value="623">RAM</option>
+                    <option value="472">Rambler</option>
+                    <option value="624">Range Rover</option>
+                    <option value="445">Ranquel</option>
+                    <option value="446">Rastrojero</option>
+                    <option value="388">Renault</option>
+                    <option value="389">Rover</option>
+                    <option value="390">Saab</option>
+                    <option value="433">Santana</option>
+                    <option value="392">Seat</option>
+                    <option value="488">Smart</option>
+                    <option value="458">Ssangyong</option>
+                    <option value="393">Subaru</option>
+                    <option value="391">Suzuki</option>
+                    <option value="394">Toyota</option>
+                    <option value="395">Volkswagen</option>
+                    <option value="396">Volvo</option>                
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <h3>en esto</h3>
+                <select name="brands[]"  id="brands" multiple style="display:none">
+                    <option value="427">Acura</option>
+                    <option value="359">Alfa Romeo</option>
+                    <option value="412">Aro</option>
+                    <option value="360">Asia</option>
+                    <option value="361">Audi</option>
+                    <option value="457">Autounion</option>
+                    <option value="362">BMW</option>
+                    <option value="464">Borgward</option>
+                    <option value="421">Cadillac</option>
+                    <option value="495">Chery</option>
+                    <option value="363">Chevrolet</option>
+                    <option value="364">Chrysler</option>
+                    <option value="365">Citroën</option>
+                    <option value="414">Dacia</option>
+                    <option value="366">Daewoo</option>
+                    <option value="367">Daihatsu</option>
+                    <option value="463">De Tomaso</option>
+                    <option value="480">Deutz</option>
+                    <option value="368">Dodge</option>
+                    <option value="369">Ferrari</option>
+                    <option value="370">Fiat</option>
+                    <option value="371">Ford</option>
+                    <option value="420">FSO</option>
+                    <option value="373">Honda</option>
+                    <option value="474">Hummer</option>
+                    <option value="372">Hyundai</option>
+                    <option value="467">IKA</option>
+                    <option value="374">Isuzu</option>
+                    <option value="375">Iveco</option>
+                    <option value="376">Jaguar</option>
+                    <option value="377">Jeep</option>
+                    <option value="378">Kia</option>
+                    <option value="407">Lada</option>
+                    <option value="466">Lamborghini</option>
+                    <option value="423">Lancia</option>
+                    <option value="379">Land Rover</option>
+                    <option value="487">Lexus</option>
+                    <option value="381">Mazda</option>
+                    <option value="382">Mercedes-Benz</option>
+                    <option value="482">MG</option>
+                    <option value="465">Mini</option>
+                    <option value="383">Mitsubishi</option>
+                    <option value="424">Morris</option>
+                    <option value="461">Motorhome</option>
+                    <option value="384">Nissan</option>
+                    <option value="415">Opel</option>
+                    <option value="485">Overlan</option>
+                    <option value="385">Peugeot</option>
+                    <option value="444">Piaggio</option>
+                    <option value="452">Pontiac</option>
+                    <option value="386">Porsche</option>
+                    <option value="623">RAM</option>
+                    <option value="472">Rambler</option>
+                    <option value="624">Range Rover</option>
+                    <option value="445">Ranquel</option>
+                    <option value="446">Rastrojero</option>
+                    <option value="388">Renault</option>
+                    <option value="389">Rover</option>
+                    <option value="390">Saab</option>
+                    <option value="433">Santana</option>
+                    <option value="392">Seat</option>
+                    <option value="488">Smart</option>
+                    <option value="458">Ssangyong</option>
+                    <option value="393">Subaru</option>
+                    <option value="391">Suzuki</option>
+                    <option value="394">Toyota</option>
+                    <option value="395">Volkswagen</option>
+                    <option value="396">Volvo</option>                
+                </select>
+                <div id="botones" class="btn-group" style="margin-bottom: 10px;display:none">
+                    <button type="button" class="btn btn-default" onclick="agregar(1,'left')">add Left</button>
+                    <button type="button" class="btn btn-default" onclick="agregar(2,'middle')">add Middle</button>
+                    <button type="button" class="btn btn-default" onclick="agregar(3,'right')">add Right</button>
+                </div>            
+                <select name="brands_c[]"  id="brands_c" multiple style="display:none"></select>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <h4>Codigo de ejemplo</h4>
+            <span>Debes incluir los siguientes encabezados:</span>
+            <br>
+            <code>&lt;script type="text/javascript" src="path_to/jquery.js">&lt;/script><br>
+                &lt;link rel="stylesheet" href="path_to/bootstrap.min.css"><br>
+                &lt;script type="text/javascript" src="path_to/bootstrap.js">&lt;/script><br>
+                &lt;script type="text/javascript" src="path_to/jquery.z_choos.js">&lt;/script><br>
+                &lt;link rel="stylesheet" href="path_to/z_choos.css">
+            </code><br>
+            <span>y Tu codigo ejemplo seria:</span><br>
+            <code id="code"></code>
+        </div>    
+        <div class="col-sm-12">
+            tabla de referencias
+        </div>
+        <div>
+            log de cambios
+        </div>
+        <div>
+            proximas caracteristicas
+        </div>
+        <script src="./index.js" type="text/javascript"></script>
+    </body>
 </html>
